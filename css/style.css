@@ -1,0 +1,33 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+.card-img,
+.card-img-top {
+    object-fit: cover;
+}
+
+.card {
+    margin: 0.5rem;
+    
+}
+
+.plant-boxes {
+    margin: 0 5rem;
+}
+
+.info-text {
+    margin-bottom: 1rem;
+}

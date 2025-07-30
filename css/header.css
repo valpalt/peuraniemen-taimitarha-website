@@ -1,0 +1,17 @@
+.navbar { /* VALITSE HEADERIN VÄRI */
+    background-color: darkslategrey; /* Vaihda haluamaksesi väriksi */
+}
+
+.navbar, .navbar-nav .nav-link, .navbar-brand {
+    color: #fff !important;
+}
+
+.navbar-brand img {
+    width: 150px; /* Muuta halutuksi leveydeksi */
+    height: auto; /* Säilyttää kuvasuhteen */
+    /* margin: 0 0 0 4rem; /* Lisää tilaa logon ympärille */
+}
+
+.navbar-nav {
+    align-items: center;
+}

@@ -1,0 +1,27 @@
+footer { /* VALITSE FOOTERIN VÄRI */
+    background-color: darkslategrey; /* Vaihda haluamaksesi väriksi */
+}
+
+.logo-footer {
+    width: auto;
+    max-height: 100px;
+    height: auto;
+    /* border: 2px solid blue; */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 576px) {
+    .logo-footer {
+        max-width: 40px;
+    }
+}
+
+/*.row-footer {
+    border: 2px solid red;
+}
+
+.column {
+    border: 2px solid yellowgreen;
+} */
