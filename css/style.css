@@ -14,6 +14,8 @@ main {
     flex: 1;
 }
 
+ 
+
 .card-img,
 .card-img-top {
     object-fit: cover;
@@ -21,6 +23,10 @@ main {
 
 .card {
     margin: 0.5rem;
+}
+
+.card-img-overlay { /* Säätää kortteja etusivulla sekä tuotesivulla */
+    background-color: rgba(0, 0, 0, 0.2); /* Tämä lisää hieman tummennusta kuvaan jolloin teksti näkyy paremmin */
 }
 
 .plant-boxes {
@@ -33,8 +39,32 @@ main {
 
 .card-title {
     color: white !important;
+    font-size: clamp(0.9em, 2.5vw, 1.5em); /* Minimikoko 0.9em, ihanneluku 2.5vw, maksimikoko 1.5em */
 }
 
 .card-text {
-    color: white;
+    color: white !important;
+    font-size: clamp(0.7em, 1.5vw, 1.2em);
+}
+
+@media (max-width: 375px) {
+    .card-img-overlay .btn {
+        display: none; /* Piilottaa napin */
+    }
+}
+
+.hero-section {
+    position: relative; /* Varmista, että hero-section on positionoitu */
+}
+
+@media (min-width: 426px) {
+    .intro-box {
+        max-width: 350px; /* Suuremmilla näytöillä max-width on 350px */
+    }
+}
+
+@media (max-width: 425px) {
+    .intro-box {
+        margin-right: 3em;
+    }
 }
