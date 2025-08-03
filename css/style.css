@@ -63,7 +63,7 @@ main {
     }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 500px) {
     .intro-box {
         margin-right: 3em;
     }
