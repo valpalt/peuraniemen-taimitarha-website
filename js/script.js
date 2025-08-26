@@ -1,10 +1,18 @@
 // Tämä funktio lataa headerin ja footerin erillisistä HTML-tiedostoista ja sijoittaa ne sivulle.
 function loadHeaderFooter() {
+    // Määritetään oikea polku includes-hakemistoon
+    let includesPath = 'includes/'; // Oletuspolku sivuille, jotka ovat juuritasolla
+
+    // Tarkistetaan, onko nykyinen sivu alihakemistossa
+    if (window.location.pathname.includes('/lajikkeet/')) {
+      includesPath = '../includes/'; // Polku lajikkeet-alihakemistossa oleville sivuille
+    }
+
     // Promise.all mahdollistaa useamman fetch-pyynnön tekemisen samanaikaisesti.
     // Tässä ladataan sekä header että footer samaan aikaan.
     return Promise.all([
       // Ladataan header.html-tiedosto
-      fetch('includes/header.html')
+      fetch(includesPath + 'header.html')
         .then(res => {
           // Tarkistetaan, onnistuiko lataus. Jos vastaus ei ole ok (esim. 404-virhe), heitetään virhe.
           if (!res.ok) {
@@ -23,7 +31,7 @@ function loadHeaderFooter() {
           // Tässä kohtaa voitaisiin näyttää käyttäjälle virheilmoitus, esim. alert-ikkunalla tai muulla tavalla.
         }),
       // Ladataan footer.html-tiedosto (samanlainen kuin headerin lataus)
-      fetch('includes/footer.html')
+      fetch(includesPath + 'footer.html')
         .then(res => {
           // Tarkistetaan, onnistuiko lataus.
           if (!res.ok) {
@@ -59,4 +67,3 @@ function loadHeaderFooter() {
       initPage();
     });
   });
-  
