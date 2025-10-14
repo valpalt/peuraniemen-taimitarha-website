@@ -2,12 +2,10 @@
 function loadHeaderFooter() {
     // Määritetään oikea polku includes-hakemistoon
     let includesPath = 'includes/'; // Oletuspolku sivuille, jotka ovat juuritasolla
-    let rootPath = ''; // Polku juureen nykyiseltä sivulta
 
     // Tarkistetaan, onko nykyinen sivu alihakemistossa
     if (window.location.pathname.includes('/lajikkeet/')) {
       includesPath = '../includes/'; // Polku lajikkeet-alihakemistossa oleville sivuille
-      rootPath = '../'; // Täytyy mennä ylöspäin yhden tason juureen
     }
 
     // Promise.all mahdollistaa useamman fetch-pyynnön tekemisen samanaikaisesti.
@@ -24,14 +22,7 @@ function loadHeaderFooter() {
           return res.text();
         })
         .then(data => {
-          // Jos ollaan alihakemistossa, korjataan suhteelliset polut
-          if (rootPath) {
-            // Korjataan href-attribuutit jotka eivät ala http:llä tai #:llä
-            data = data.replace(/href="(?!http|https|#)/g, `href="${rootPath}`);
-            // Korjataan src-attribuutit jotka eivät ala http:llä
-            data = data.replace(/src="(?!http|https)/g, `src="${rootPath}`);
-          }
-          // Kun headerin sisältö on ladattu ja polut korjattu, sijoitetaan se sivulle
+          // Kun headerin sisältö on ladattu, sijoitetaan se sivulle
           document.getElementById('header').innerHTML = data;
         })
         .catch(error => {
@@ -50,13 +41,6 @@ function loadHeaderFooter() {
           return res.text();
         })
         .then(data => {
-          // Jos ollaan alihakemistossa, korjataan suhteelliset polut myös footerissa
-          if (rootPath) {
-            // Korjataan href-attribuutit jotka eivät ala http:llä tai #:llä
-            data = data.replace(/href="(?!http|https|#)/g, `href="${rootPath}`);
-            // Korjataan src-attribuutit jotka eivät ala http:llä
-            data = data.replace(/src="(?!http|https)/g, `src="${rootPath}`);
-          }
           // Kun footerin sisältö on ladattu, sijoitetaan se sivulla olevaan elementtiin, jonka id on 'footer'.
           document.getElementById('footer').innerHTML = data;
         })
