@@ -1,4 +1,4 @@
-// Tämä funktio lataa headerin ja footerin erillisistä HTML-tiedostoista ja sijoittaa ne sivulle.
+// Funktio lataa headerin ja footerin erillisistä HTML-tiedostoista ja sijoittaa ne sivulle.
 function loadHeaderFooter() {
     // Määritetään oikea polku includes-hakemistoon
     let includesPath = 'includes/'; // Oletuspolku sivuille, jotka ovat juuritasolla
@@ -28,7 +28,7 @@ function loadHeaderFooter() {
         .catch(error => {
           // Jos headerin latauksessa tapahtuu virhe, tulostetaan virhe konsoliin.
           console.error("Virhe headerin latauksessa:", error);
-          // Tässä kohtaa voitaisiin näyttää käyttäjälle virheilmoitus, esim. alert-ikkunalla tai muulla tavalla.
+          // Tässä kohtaa voitaisiin näyttää nettisivun käyttäjälle virheilmoitus, esim. alert-ikkunalla tai muulla tavalla.
         }),
       // Ladataan footer.html-tiedosto (samanlainen kuin headerin lataus)
       fetch(includesPath + 'footer.html')
@@ -47,7 +47,7 @@ function loadHeaderFooter() {
         .catch(error => {
           // Jos footerin latauksessa tapahtuu virhe, tulostetaan virhe konsoliin.
           console.error("Virhe footerin latauksessa:", error);
-          // Tässä kohtaa voitaisiin näyttää käyttäjälle virheilmoitus.
+          // Tässäkin kohtaa voitaisiin näyttää nettisivun käyttäjälle virheilmoitus, esim. alert-ikkunalla tai muulla tavalla.
         })
     ]);
   }
@@ -56,7 +56,7 @@ function loadHeaderFooter() {
   function initPage() {
     // Tulostetaan viesti konsoliin, kun sivu on ladattu ja header/footer ovat näkyvissä.
     console.log("Sivu on ladattu ja header/footer näkyvissä");
-    // Tähän voi lisätä muuta sivun skriptitoimintaa, esim. tapahtumakuuntelijoita, animaatioita jne.
+    // Tähän voisi lisätä muuta sivun skriptitoimintaa, esim. tapahtumakuuntelijoita, animaatioita jne.
   }
   
   // Tämä koodi suoritetaan, kun sivu on latautunut kokonaan (DOM on valmis).
