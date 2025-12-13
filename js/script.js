@@ -1,3 +1,20 @@
+// Asetetaan <base> elementin href-arvo dynaamisesti sen mukaan, onko sivu GitHub Pagesissa vai paikallisesti.
+(function () {
+    const isGitHubPages = location.hostname === "valpalt.github.io";
+    const repoName = "peuraniemen-taimitarha-website";
+
+    const base = document.querySelector("base"); // Haetaan <base> elementti
+
+    if (!base) return;  // Jos <base> elementtiä ei löydy, lopetetaan suoritus
+
+    if (isGitHubPages) {  // Jos ollaan GitHub Pagesissa
+        base.href = `/${repoName}/`; // Asetetaan href repoon
+    } else {
+        // localhost tai oikea domain
+        base.href = "/";
+    }
+})();
+
 // Funktio lataa headerin ja footerin erillisistä HTML-tiedostoista ja sijoittaa ne sivulle.
 function loadHeaderFooter() {
     // Määritetään oikea polku includes-hakemistoon
