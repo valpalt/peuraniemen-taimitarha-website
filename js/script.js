@@ -1,46 +1,76 @@
 function loadHeaderFooter() {
-    // Repo-polku GitHub Pagesissa
-    const isGitHubPages = location.hostname === "valpalt.github.io";
-    const repoName = "peuraniemen-taimitarha-website";
+  const isGitHubPages = location.hostname === "valpalt.github.io";
+  const repoName = "peuraniemen-taimitarha-website";
+  const basePath = isGitHubPages ? `/${repoName}/` : "./";
 
-    const basePath = isGitHubPages ? `/${repoName}/` : "./";
+  console.group("[loadHeaderFooter]");
+  console.log("hostname:", location.hostname, "protocol:", location.protocol);
+  console.log("isGitHubPages:", isGitHubPages, "repoName:", repoName, "basePath:", basePath);
 
-    // Lataa header ja footer
-    return Promise.all([
-        fetch(basePath + "includes/header.html")
-            .then(res => {
-                if (!res.ok) throw new Error(`Headerin lataus epäonnistui: ${res.status}`);
-                return res.text();
-            })
-            .then(data => {
-                document.getElementById('header').innerHTML = data;
-            })
-            .catch(error => console.error(error)),
-        fetch(basePath + "includes/footer.html")
-            .then(res => {
-                if (!res.ok) throw new Error(`Footerin lataus epäonnistui: ${res.status}`);
-                return res.text();
-            })
-            .then(data => {
-                document.getElementById('footer').innerHTML = data;
-            })
-            .catch(error => console.error(error))
-    ]);
+  const headerUrl = new URL(basePath + "includes/header.html", location.href).href;
+  const footerUrl = new URL(basePath + "includes/footer.html", location.href).href;
+  console.log("headerUrl:", headerUrl);
+  console.log("footerUrl:", footerUrl);
+
+  console.time("headerFetch");
+  const headerPromise = fetch(headerUrl)
+    .then(res => {
+      console.log("[header] status:", res.status, "ok:", res.ok, "url:", res.url);
+      if (!res.ok) throw new Error(`Headerin lataus epäonnistui: ${res.status}`);
+      return res.text();
+    })
+    .then(data => {
+      console.log("[header] length:", data.length);
+      const el = document.getElementById("header");
+      if (!el) {
+        console.error("[header] elementtiä #header ei löytynyt");
+        return;
+      }
+      el.innerHTML = data;
+    })
+    .catch(err => {
+      console.error("[header] virhe:", err);
+      throw err; // tärkeä: anna virheen kaataa Promise.all:n
+    })
+    .finally(() => console.timeEnd("headerFetch"));
+
+  console.time("footerFetch");
+  const footerPromise = fetch(footerUrl)
+    .then(res => {
+      console.log("[footer] status:", res.status, "ok:", res.ok, "url:", res.url);
+      if (!res.ok) throw new Error(`Footerin lataus epäonnistui: ${res.status}`);
+      return res.text();
+    })
+    .then(data => {
+      console.log("[footer] length:", data.length);
+      const el = document.getElementById("footer");
+      if (!el) {
+        console.error("[footer] elementtiä #footer ei löytynyt");
+        return;
+      }
+      el.innerHTML = data;
+    })
+    .catch(err => {
+      console.error("[footer] virhe:", err);
+      throw err; // tärkeä: anna virheen kaataa Promise.all:n
+    })
+    .finally(() => console.timeEnd("footerFetch"));
+
+  const all = Promise.all([headerPromise, footerPromise])
+    .finally(() => console.groupEnd());
+
+  return all;
 }
 
-  
-  // Tämä funktio sisältää sivun muun JavaScript-toiminnallisuuden.
-  function initPage() {
-    // Tulostetaan viesti konsoliin, kun sivu on ladattu ja header/footer ovat näkyvissä.
-    console.log("Sivu on ladattu ja header/footer näkyvissä");
-    // Tähän voisi lisätä muuta sivun skriptitoimintaa, esim. tapahtumakuuntelijoita, animaatioita jne.
-  }
-  
-  // Tämä koodi suoritetaan, kun sivu on latautunut kokonaan (DOM on valmis).
-  window.addEventListener('DOMContentLoaded', () => {
-    // Ensin ladataan header ja footer.
-    loadHeaderFooter().then(() => {
-      // Kun header ja footer ovat latautuneet, käynnistetään sivun muu toiminnallisuus.
-      initPage();
+function initPage() {
+  console.log("[initPage] käynnissä, header/footer pitäisi olla näkyvissä");
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  console.log("[DOMContentLoaded] fired. path:", location.pathname);
+  loadHeaderFooter()
+    .then(() => initPage())
+    .catch(err => {
+      console.error("[DOMContentLoaded] header/footer lataus epäonnistui:", err);
     });
-  });
+});
