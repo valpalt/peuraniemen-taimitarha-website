@@ -1,14 +1,16 @@
-// Asynkroninen funktio headerin ja footerin lataamiseen
 async function loadHeaderFooter() {
-    if (window.__headerFooterLoading || window.__headerFooterLoaded) return; // prevent double init
+    // Skip if loading is in progress or already completed
+    if (window.__headerFooterLoading || window.__headerFooterLoaded) return;
     window.__headerFooterLoading = true;
 
+    // Resolve base path so assets work on both localhost and GitHub Pages (including deep links)
     const repoName = "peuraniemen-taimitarha-website";
     const repoPrefix = `/${repoName}/`;
     const hostIsPages = /\.github\.io$/i.test(window.location.hostname);
     const path = window.location.pathname || "/";
-    const basePath = path.startsWith(repoPrefix) ? repoPrefix : (hostIsPages ? repoPrefix : "/"); // works on localhost and GitHub Pages
+    const basePath = path.startsWith(repoPrefix) ? repoPrefix : (hostIsPages ? repoPrefix : "/");
 
+    // Prefix relative href/src values inside injected header/footer
     const prefixPaths = (container) => {
         if (!container) return;
         const needsPrefix = (value) => {
@@ -29,7 +31,7 @@ async function loadHeaderFooter() {
     };
 
     try {
-        // Ladataan header
+        // Fetch and inject header
         const headerResponse = await fetch(basePath + "includes/header.html");
         if (!headerResponse.ok) {
             throw new Error(`Headerin lataus epäonnistui: ${headerResponse.status}`);
@@ -39,7 +41,7 @@ async function loadHeaderFooter() {
         headerContainer.innerHTML = headerHTML;
         prefixPaths(headerContainer);
 
-        // Ladataan footer
+        // Fetch and inject footer
         const footerResponse = await fetch(basePath + "includes/footer.html");
         if (!footerResponse.ok) {
             throw new Error(`Footerin lataus epäonnistui: ${footerResponse.status}`);
@@ -57,13 +59,13 @@ async function loadHeaderFooter() {
     }
 }
 
-// Funktio, joka suoritetaan, kun header ja footer on ladattu
+// Page-level hook once shared chrome is ready
 function initPage() {
     console.log("Sivu on ladattu ja header/footer näkyvissä");
     // Tänne kaikki sivukohtainen JS jatkossa
 }
 
-// Käynnistys
+// Bootstrap shared chrome and page script
 (async function start() {
     await loadHeaderFooter();
     initPage();
