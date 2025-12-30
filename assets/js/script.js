@@ -1,8 +1,13 @@
 // Asynkroninen funktio headerin ja footerin lataamiseen
 async function loadHeaderFooter() {
-    const isGitHubPages = location.hostname === "valpalt.github.io";
+    if (window.__headerFooterLoading || window.__headerFooterLoaded) return; // prevent double init
+    window.__headerFooterLoading = true;
+
     const repoName = "peuraniemen-taimitarha-website";
-    const basePath = isGitHubPages ? `/${repoName}/` : "/";
+    const repoPrefix = `/${repoName}/`;
+    const hostIsPages = /\.github\.io$/i.test(window.location.hostname);
+    const path = window.location.pathname || "/";
+    const basePath = path.startsWith(repoPrefix) ? repoPrefix : (hostIsPages ? repoPrefix : "/"); // works on localhost and GitHub Pages
 
     const prefixPaths = (container) => {
         if (!container) return;
@@ -44,8 +49,11 @@ async function loadHeaderFooter() {
         footerContainer.innerHTML = footerHTML;
         prefixPaths(footerContainer);
 
+        window.__headerFooterLoaded = true;
     } catch (error) {
         console.error("Header/footer lataus epäonnistui:", error);
+    } finally {
+        window.__headerFooterLoading = false;
     }
 }
 

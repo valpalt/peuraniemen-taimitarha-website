@@ -33,15 +33,4 @@
     <div class="text-center">
         © 2025 Peuraniemen Taimitarha Oy
     </div>
-    <script>
-        const isGitHubPages = location.hostname === "valpalt.github.io"; // Tarkistaa onko sivusto GitHub Pagesissä
-        const repoName = "peuraniemen-taimitarha-website";               // Korvaa tämä omaan repositorion nimeesi
-        const basePath = isGitHubPages ? `/${repoName}/` : "/";          // Asettaa basePathin sen mukaan, onko GitHub Pagesissä vai ei
-
-        const script = document.createElement("script");     // Luo uusi script-elementti
-        script.src = basePath + "assets/js/script.js";       // Asettaa scriptin lähteen dynaamisesti
-        script.defer = true;                                 // Asettaa defer-attribuutin, jotta skripti ladataan asynkronisesti
-        document.body.appendChild(script);                   // Lisää skripti bodyyn    
-    </script>
-
 </footer>
