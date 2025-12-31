@@ -38,12 +38,12 @@ main {
 }
 
 .card-title {
-    color: white !important;
+    color: #F6F8F5 !important;
     font-size: clamp(0.9em, 2.5vw, 1.5em); /* Minimikoko 0.9em, ihanneluku 2.5vw, maksimikoko 1.5em */
 }
 
 .card-text {
-    color: white !important;
+    color: #F6F8F5 !important;
     font-size: clamp(0.7em, 1.5vw, 1.2em);
 }
 
@@ -67,4 +67,18 @@ main {
     .intro-box {
         margin-right: 3em;
     }
+}
+
+
+/* Override Bootstrap button hover colors */
+.btn-outline-light:hover {
+    background-color: #2F5E42 !important;
+    border-color: #2F5E42 !important;
+    color: #F6F8F5 !important;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #2F5E42 !important;
+    border-color: #2F5E42 !important;
+    color: #F6F8F5 !important;
 }

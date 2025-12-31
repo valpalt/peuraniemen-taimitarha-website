@@ -1,9 +1,10 @@
 .navbar { /* VALITSE HEADERIN VÄRI */
-    background-color: darkslategrey; /* Vaihda haluamaksesi väriksi */
+    background-color: #1F3D2B; /* Vaihda haluamaksesi väriksi */
 }
 
 .navbar, .navbar-nav .nav-link, .navbar-brand {
-    color: #fff !important;
+    color: #F6F8F5 !important;  /* Vaalea väri tekstille */
+    
 }
 
 .navbar-brand img {

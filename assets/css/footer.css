@@ -1,5 +1,6 @@
 footer { /* VALITSE FOOTERIN VÄRI */
-    background-color: darkslategrey; /* Vaihda haluamaksesi väriksi */
+    /* background-color: darkslategrey; /* Vaihda haluamaksesi väriksi */
+    background-color: #1F3D2B; /* Vaihda haluamaksesi väriksi */
 }
 
 .logo-footer {
