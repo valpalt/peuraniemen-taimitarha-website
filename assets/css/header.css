@@ -16,3 +16,18 @@
 .navbar-nav {
     align-items: center;
 }
+
+.navbar-toggler {
+    border-color: #F6F8F5 !important;
+}
+
+.navbar-toggler:hover,
+.navbar-toggler:focus {
+    border-color: #F6F8F5 !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.navbar-toggler-icon {
+    filter: invert(1) brightness(1.5);
+}
