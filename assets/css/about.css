@@ -1,4 +1,6 @@
+/* Styles for the about page */
+
 .product-title h1 {
-    font-size: clamp(2rem, 5vw, 3rem); /* Fontin koko on vähintään 2rem, enintään 4rem ja skaalautuu 5vw mukaan */
+    font-size: clamp(2rem, 5vw, 3rem); /* Fontin koko on vähintään 2rem, enintään 3rem ja skaalautuu 5vw mukaan */
     text-align: center; /* Teksti keskitetään */
 }

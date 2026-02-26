@@ -1,3 +1,5 @@
+/* General styles for the website */
+
 html, body {
     height: 100%;
     margin: 0;
@@ -13,8 +15,6 @@ body {
 main {
     flex: 1;
 }
-
- 
 
 .card-img,
 .card-img-top {
@@ -38,9 +38,9 @@ main {
 }
 
 .card-title {
-    color: #F6F8F5 !important;
     font-size: clamp(0.7em, 3vw, 1.1em); /* Better balance between fitting and readability */
     white-space: nowrap; /* Prevent words from breaking */
+    color: #F6F8F5 !important;
     text-shadow: 
         1px 1px 4px rgba(0, 0, 0, 1),
         2px 2px 10px rgba(0, 0, 0, 0.95) !important; /* Layered shadow for strong visibility */
@@ -85,4 +85,13 @@ main {
     background-color: #2F5E42 !important;
     border-color: #2F5E42 !important;
     color: #F6F8F5 !important;
+}
+
+.product-title { /* Sivujen pääotsikoiden tyyli */
+    font-size: clamp(2rem, 5vw, 4rem); /* Fontin koko on vähintään 2rem, enintään 4rem ja skaalautuu 5vw mukaan */
+    text-align: center; /* Teksti keskitetään */  
+    color: #F6F8F5 !important;
+    text-shadow: 
+        1px 1px 4px rgba(0, 0, 0, 1),
+        2px 2px 10px rgba(0, 0, 0, 0.95) !important; /* Layered shadow for strong visibility */
 }

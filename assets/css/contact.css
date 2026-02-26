@@ -1,3 +1,5 @@
+/* Styles for the contact page */
+
 .product-title h1 {
     font-size: clamp(2rem, 5vw, 4rem); /* Fontin koko on vähintään 2rem, enintään 4rem ja skaalautuu 5vw mukaan */
 }
