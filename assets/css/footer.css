@@ -5,6 +5,20 @@ footer { /* VALITSE FOOTERIN VÄRI */
     background-color: #1F3D2B; /* Vaihda haluamaksesi väriksi */
 }
 
+.row-footer {
+    row-gap: 1.5rem;
+}
+
+.column {
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.column p {
+    margin-bottom: 0;
+    line-height: 1.7;
+}
+
 .logo-footer {
     width: auto;
     max-height: 100px;
@@ -20,6 +34,11 @@ footer { /* VALITSE FOOTERIN VÄRI */
         max-width: 40px;
     }
 }
+
+.footer-date {
+    padding-bottom: 2rem;
+}
+
 
 /*.row-footer {
     border: 2px solid red;

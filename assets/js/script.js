@@ -62,6 +62,10 @@ async function loadHeaderFooter() {
 // Page-level hook once shared chrome is ready
 function initPage() {
     console.log("Sivu on ladattu ja header/footer näkyvissä");
+    const currentYearElement = document.getElementById("current-year");
+    if (currentYearElement) {
+        currentYearElement.textContent = String(new Date().getFullYear());
+    }
     // Tänne kaikki sivukohtainen JS jatkossa
 }
 
