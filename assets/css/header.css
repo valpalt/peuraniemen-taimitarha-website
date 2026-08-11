@@ -1,35 +1,111 @@
 /* Styles for the header */
 
-.navbar { /* VALITSE HEADERIN VÄRI */
-    background-color: #1F3D2B; /* Vaihda haluamaksesi väriksi */
+#header {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+}
+
+.navbar {
+    background-color: rgba(255, 255, 255, 0.9); /* Sama väri ja läpinäkyvyys kuin intro-boxissa */
+    padding-top: 0.25rem;      /* Pienentää headerin korkeutta */
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+    z-index: 1030; /* Varmistaa, että header pysyy sisällön yläpuolella scrollatessa */
+}
+
+.navbar-collapse {
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.header-container {
+    min-height: 3.5rem;
+}
+
+.mobile-header {
+    position: relative;
+    width: 100%;
+    min-height: 3.5rem;
+}
+
+.mobile-header-spacer {
+    display: none;
+}
+
+.mobile-logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 0.15rem 0.65rem;
+    border-radius: 999px;
+    background-color: transparent;
+    z-index: 3;
 }
 
 .navbar, .navbar-nav .nav-link, .navbar-brand {
-    color: #F6F8F5 !important;  /* Vaalea väri tekstille */
-    
-}
-
-.navbar-brand img {
-    width: 150px; /* Muuta halutuksi leveydeksi */
-    height: auto; /* Säilyttää kuvasuhteen */
-    /* margin: 0 0 0 4rem; /* Lisää tilaa logon ympärille */
+    color: #000000 !important;  /* Musta väri tekstille */
 }
 
 .navbar-nav {
     align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+.nav-logo-item {
+    flex-shrink: 0;
+}
+
+.nav-logo-link {
+    display: flex;
+    align-items: center;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 999px;
+    background-color: transparent;
+}
+
+.nav-logo {
+    width: 100px; /* Pienempi logo -> pienempi header */
+    height: auto; /* Säilyttää kuvasuhteen */
+    filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.25));
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.2rem;      /* Suuremmat linkit */
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.nav-about-link {
+    text-align: center;
 }
 
 .navbar-toggler {
-    border-color: #F6F8F5 !important;
+    border-color: #000000 !important;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
 }
 
 .navbar-toggler:hover,
 .navbar-toggler:focus {
-    border-color: #F6F8F5 !important;
+    border-color: #000000 !important;
     outline: none !important;
     box-shadow: none !important;
 }
 
 .navbar-toggler-icon {
-    filter: invert(1) brightness(1.5);
+    filter: none; /* Ei tarvitse inverttiä, ikoni sopii tummana vaalealle taustalle */
 }

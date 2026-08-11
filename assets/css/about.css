@@ -4,3 +4,9 @@
     font-size: clamp(2rem, 5vw, 3rem); /* Fontin koko on vähintään 2rem, enintään 3rem ja skaalautuu 5vw mukaan */
     text-align: center; /* Teksti keskitetään */
 }
+
+@media (min-width: 700px) and (max-width: 1000px) {
+    .info-text h4 {
+        text-align: center;
+    }
+}

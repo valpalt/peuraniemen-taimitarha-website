@@ -2,7 +2,9 @@
 
 footer { /* VALITSE FOOTERIN VÄRI */
     /* background-color: darkslategrey; /* Vaihda haluamaksesi väriksi */
-    background-color: #1F3D2B; /* Vaihda haluamaksesi väriksi */
+    background: linear-gradient(180deg, #17291E 0%, #111E16 100%); /* Vaihda haluamaksesi väriksi */
+    border-top: 1px solid rgba(246, 248, 245, 0.06);
+    color: #F6F8F5;
 }
 
 .row-footer {
@@ -32,6 +34,74 @@ footer { /* VALITSE FOOTERIN VÄRI */
 @media (max-width: 576px) {
     .logo-footer {
         max-width: 40px;
+    }
+
+    .row-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        row-gap: 1rem;
+    }
+
+    .column {
+        margin-left: 0;
+        margin-right: 0;
+        width: 90%;
+        max-width: 480px;
+    }
+
+    /* Center text inside columns on small screens */
+    .column,
+    .column p,
+    .column ul,
+    .column li,
+    .column h1,
+    .column h2,
+    .column h3,
+    .column h4,
+    .column h5,
+    .column h6 {
+        text-align: center;
+    }
+
+    .column ul {
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Tablet breakpoint: center footer blocks and text similar to small screens */
+    .row-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        row-gap: 1rem;
+    }
+
+    .column {
+        margin-left: 0;
+        margin-right: 0;
+        width: 92%;
+        max-width: 640px;
+    }
+
+    .column,
+    .column p,
+    .column ul,
+    .column li,
+    .column h1,
+    .column h2,
+    .column h3,
+    .column h4,
+    .column h5,
+    .column h6 {
+        text-align: center;
+    }
+
+    .column ul {
+        padding-left: 0;
     }
 }
 
