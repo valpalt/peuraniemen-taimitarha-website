@@ -3,3 +3,9 @@
 .product-title h1 {
     font-size: clamp(2rem, 5vw, 4rem); /* Fontin koko on vähintään 2rem, enintään 4rem ja skaalautuu 5vw mukaan */
 }
+
+.info-text h4 {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  
+}
