@@ -1,7 +1,6 @@
 /* General styles for the website */
 
 html, body {
-    height: 100%;
     margin: 0;
     padding: 0;
 }
@@ -10,6 +9,14 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    padding-top: 94px;
+    background-color: #242424;
+}
+
+@media (max-width: 767.98px) {
+    body {
+        padding-top: 56px;
+    }
 }
 
 main {

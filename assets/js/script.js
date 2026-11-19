@@ -40,6 +40,19 @@ async function loadHeaderFooter() {
         const headerContainer = document.getElementById("header");
         headerContainer.innerHTML = headerHTML;
         prefixPaths(headerContainer);
+        
+        const navbar = headerContainer.querySelector(".navbar");
+        if (navbar) {
+            const setHeaderOffset = () => {
+                document.body.style.paddingTop = `${navbar.getBoundingClientRect().height}px`;
+            };
+            setHeaderOffset();
+            if ("ResizeObserver" in window) {
+                new ResizeObserver(setHeaderOffset).observe(navbar);
+            } else {
+                window.addEventListener("resize", setHeaderOffset);
+            }
+        }
 
         // Fetch and inject footer
         const footerResponse = await fetch(basePath + "includes/footer.html");

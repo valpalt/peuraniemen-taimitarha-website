@@ -5,6 +5,27 @@
     text-align: center; /* Teksti keskitetään */
 }
 
+@media (min-width: 768px) {
+    .about-old-text {
+        order: 1;
+    }
+
+    .about-old-image {
+        order: 2;
+        display: flex;
+        align-items: center;
+    }
+
+    .about-new-image {
+        order: 3;
+        padding-top: 1.5rem;
+    }
+
+    .about-new-text {
+        order: 4;
+    }
+}
+
 @media (min-width: 700px) and (max-width: 1000px) {
     .info-text h4 {
         text-align: center;
