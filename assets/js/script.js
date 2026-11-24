@@ -36,6 +36,24 @@ async function loadHeaderFooter() {
         if (!headerResponse.ok) {
             throw new Error(`Headerin lataus epäonnistui: ${headerResponse.status}`);
         }
+
+        function prefixProjectPagePaths() {
+            const repoName = "peuraniemen-taimitarha-website";
+            const repoPrefix = `/${repoName}/`;
+            const hostIsPages = /\.github\.io$/i.test(window.location.hostname);
+            const path = window.location.pathname || "/";
+            const basePath = path.startsWith(repoPrefix) ? repoPrefix : (hostIsPages ? repoPrefix : "/");
+            if (basePath === "/") return;
+
+            document.querySelectorAll("a[href], img[src], source[src], script[src], link[href]").forEach((el) => {
+                const attr = el.hasAttribute("href") ? "href" : "src";
+                const value = el.getAttribute(attr);
+                if (!value || !value.startsWith("/")) return;
+                if (/^\/(?:includes|assets)\//.test(value) || /^\/[^/]+\/(?:$|\?)/.test(value)) {
+                    el.setAttribute(attr, basePath + value.replace(/^\//, ""));
+                }
+            });
+        }
         const headerHTML = await headerResponse.text();
         const headerContainer = document.getElementById("header");
         headerContainer.innerHTML = headerHTML;
@@ -85,5 +103,6 @@ function initPage() {
 // Bootstrap shared chrome and page script
 (async function start() {
     await loadHeaderFooter();
+    prefixProjectPagePaths();
     initPage();
 })();
